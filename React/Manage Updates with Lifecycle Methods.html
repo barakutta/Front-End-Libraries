@@ -1,0 +1,48 @@
+class Dialog extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  componentWillUpdate() {
+    console.log('Component is about to update...');
+  }
+  // change code below this line
+  // Create componentWillReceiveProps
+  // Pass in argument nextProps and log out the current prop and next prop
+  componentWillReceiveProps(nextProps) {
+    // Log the current property and the next property
+    console.log(this.props, nextProps)
+  }
+  // Create function componentDidUpdate
+  // Log out that the component has updated
+  componentDidUpdate() {
+    console.log("Component has updated")
+  }
+
+  // change code above this line
+  render() {
+    return <h1>{this.props.message}</h1>
+  }
+};
+
+class Controller extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: 'First Message'
+    };
+    this.changeMessage = this.changeMessage.bind(this);
+  }
+  changeMessage() {
+    this.setState({
+      message: 'Second Message'
+    });
+  }
+  render() {
+    return (
+      <div>
+        <button onClick={this.changeMessage}>Update</button>
+        <Dialog message={this.state.message}/>
+      </div>
+    );
+  }
+};
