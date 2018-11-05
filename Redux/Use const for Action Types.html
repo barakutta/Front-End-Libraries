@@ -1,0 +1,49 @@
+// change code below this line
+// changed here to reference before the methods
+const LOGIN = 'LOGIN';
+const LOGOUT = 'LOGOUT';
+
+// change code above this line
+
+const defaultState = {
+ authenticated: false
+};
+
+const authReducer = (state = defaultState, action) => {
+
+ switch (action.type) {
+
+   // changed here to reference const in reducer
+   case LOGIN:
+     return {
+       authenticated: true
+     }
+
+   // changed here to reference const in reducer
+   case LOGOUT:
+     return {
+       authenticated: false
+     }
+
+   default:
+     return state;
+
+ }
+
+};
+
+const store = Redux.createStore(authReducer);
+
+// use const strings within the action creator
+const loginUser = () => {
+ return {
+   type: LOGIN
+ }
+};
+
+// use const strings within the action creator
+const logoutUser = () => {
+ return {
+   type: LOGOUT
+ }
+};

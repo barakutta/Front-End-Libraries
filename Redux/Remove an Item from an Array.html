@@ -1,0 +1,24 @@
+//nope: let newState = state.slice(action.index);
+  const immutableReducer = (state = [0,1,2,3,4,5], action) => {
+  switch(action.type) {
+    case 'REMOVE_ITEM':
+      // don't mutate state here or the tests will fail
+
+      let newState = state.filter((element, index) => {
+       return  index !== action.index
+      })
+      console.log(newState);
+      return newState
+    default:
+      return state;
+  }
+};
+
+const removeItem = (index) => {
+  return {
+    type: 'REMOVE_ITEM',
+    index
+  }
+}
+
+const store = Redux.createStore(immutableReducer);
